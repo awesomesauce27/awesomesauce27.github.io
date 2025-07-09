@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thánh chỉ chính thức</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Sacramento&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'MedievalSharp', cursive;
+    }
+
+    body {
+      background: url('guild.jpg') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 95%;
+      width: 500px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: #a52a2a;
+      text-shadow: 1px 1px 3px gold;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      font-style: italic;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    select {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background-color: #fff4ec;
+      font-size: 1rem;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    option {
+      padding: 10px;
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: pink;
+      border-radius: 50%;
+      animation: sparkle 2s infinite ease-in-out;
+    }
+
+    @keyframes sparkle {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-50px) scale(0.5); opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Thánh chỉ chính thức ✨👑</h1>
+    <h2><em>AwesomeSauce Kingdom edition</em></h2>
+    <label for="poll">Chọn tên ingame của bạn:</label>
+    <select id="poll">
+      <option>|NF|Wendy</option>
+      <option>BúnThịtLướng</option>
+      <option>NgdepNeverQuit</option>
+      <option>Natsume</option>
+      <option>|DJ|Just</option>
+      <option>OPH SugaDaddy</option>
+      <option>Osaragi</option>
+      <option>AN|anhvũ</option>
+      <option>Todegott</option>
+      <option>SMG</option>
+      <option>Eli_echalne</option>
+      <option>Iris|Sebato</option>
+      <option>Shiru</option>
+      <option>AK|Akei</option>
+      <option>TnG`Aesop</option>
+      <option>OtisDuyLinh</option>
+      <option>Chris`taten</option>
+      <option>CúbuAesop Carl</option>
+      <option>Không tìm thấy tên bạn?</option>
+    </select>
+  </div>
+
+  <script>
+    // Optional sparkle effect around the container
+    for (let i = 0; i < 30; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = Math.random() * 100 + 'vw';
+      sparkle.style.top = Math.random() * 100 + 'vh';
+      sparkle.style.animationDelay = (Math.random() * 2) + 's';
+      document.body.appendChild(sparkle);
+    }
+  </script>
+</body>
+
+</html>
