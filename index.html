@@ -6,13 +6,13 @@
   <title>Thánh chỉ chính thức</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Sacramento&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'MedievalSharp', cursive;
+      font-family: 'Noto Serif Display', serif;
     }
 
     body {
@@ -95,7 +95,6 @@
       border: none;
       background-color: #a52a2a;
       color: white;
-      font-family: 'MedievalSharp', cursive;
       box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
       cursor: pointer;
     }
@@ -125,6 +124,22 @@
       }
     }
 
+    #goBackBtn {
+      position: fixed;
+      top: 20px;
+      left: 15px;
+      z-index: 1000;
+      background-color: #a52a2a;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 15px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+      display: none;
+    }
+
     .sparkle {
       position: absolute;
       width: 5px;
@@ -138,23 +153,6 @@
     @keyframes sparkle {
       0% { transform: translateY(0) scale(1); opacity: 1; }
       100% { transform: translateY(-50px) scale(0.5); opacity: 0; }
-    }
-
-    #goBackBtn {
-      position: fixed;
-      top: 20px;
-      left: 15px;
-      z-index: 1000;
-      background-color: #a52a2a;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      padding: 10px 15px;
-      font-family: 'MedievalSharp', cursive;
-      font-size: 0.95rem;
-      cursor: pointer;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-      display: none;
     }
   </style>
 </head>
@@ -191,35 +189,23 @@
             <option>CúbuAesop Carl</option>
             <option>Không tìm thấy tên bạn?</option>
           </select>
-          <button id="getBadge">Nhận badge của bạn</button>
+          <button id="getBadge">Nhận badge</button>
         </div>
       </div>
     </div>
 
-    <div class="result-box" id="resultBoxWrapper">
+    <div class="result-box">
       <div class="inner-box">
         <div id="resultBox" class="result-box-content" style="display: none;">
-          <h3 id="congratsText">Chúc mừng! Bạn đã nhận được chiếc badge danh dự duy nhất của vương quốc</h3>
-          <p id="badgeTitle" style="font-weight: bold;">✨ The Honorable Witch ✨</p>
-          <img id="badgeImg" src="guild.gif" alt="badge" style="width: 100%; border-radius: 15px; margin-top: 10px;">
+          <h3 id="congratsText"></h3>
+          <p id="badgeTitle" style="font-weight: bold;"></p>
+          <img id="badgeImg" src="" alt="badge" style="width: 100%; border-radius: 15px; margin-top: 10px;">
 
-          <button id="claimPerks" style="margin-top: 15px; padding: 10px 20px; font-size: 1rem; border-radius: 10px; border: none; background-color: #a52a2a; color: white; font-family: 'MedievalSharp', cursive; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); cursor: pointer;">
+          <button id="claimPerks" style="margin-top: 15px; padding: 10px 20px; font-size: 1rem; border-radius: 10px; border: none; background-color: #a52a2a; color: white; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); cursor: pointer;">
             Nhận badge
           </button>
 
-          <div id="perkSection" style="display: none; margin-top: 20px;">
-            <p style="font-weight: bold; font-size: 1.1rem;">Xem quyền lợi</p>
-
-            <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
-              <img src="guild (3).gif" alt="perk1" style="width: 60px; height: auto; border-radius: 10px;">
-              <span>Tiểu phù thuỷ - Được mời thêm 1 bạn bè gia nhập guild với hộ chiếu trọn đời</span>
-            </div>
-
-            <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
-              <img src="guild1.gif" alt="perk2" style="width: 60px; height: auto; border-radius: 10px;">
-              <span>Bí ngô dăm đảng - Vé ra vào guild không giới hạn lần</span>
-            </div>
-          </div>
+          <div id="perkSection" style="display: none; margin-top: 20px;"></div>
         </div>
       </div>
     </div>
@@ -238,14 +224,13 @@
     const selectBox = document.getElementById("poll");
     const badgeButton = document.getElementById("getBadge");
     const resultBox = document.getElementById("resultBox");
-    const container = document.querySelector(".container");
-    const backBtn = document.getElementById("goBackBtn");
-
     const congratsText = document.getElementById("congratsText");
     const badgeTitle = document.getElementById("badgeTitle");
     const badgeImg = document.getElementById("badgeImg");
     const claimBtn = document.getElementById("claimPerks");
     const perkSection = document.getElementById("perkSection");
+    const backBtn = document.getElementById("goBackBtn");
+    const container = document.querySelector(".container");
 
     selectBox.addEventListener("change", () => {
       badgeButton.style.display = "block";
@@ -253,16 +238,41 @@
 
     badgeButton.addEventListener("click", () => {
       const selected = selectBox.value;
+      resultBox.style.display = "block";
+      resultBox.classList.add("slide-in");
+      backBtn.style.display = "block";
+      perkSection.style.display = "none";
+      perkSection.innerHTML = "";
+
       if (selected === "|NF|Wendy") {
-        resultBox.style.display = "block";
-        resultBox.classList.add("slide-in");
-        backBtn.style.display = "block";
-        resultBox.scrollIntoView({ behavior: 'smooth' });
+        congratsText.textContent = "Chúc mừng! Bạn đã nhận được chiếc badge danh dự duy nhất của vương quốc";
+        badgeTitle.textContent = "✨ The Honorable Witch ✨";
+        badgeImg.src = "guild.gif";
+        perkSection.innerHTML = `
+          <p style="font-weight: bold; font-size: 1.1rem;">Vật phẩm & Quyền lợi</p>
+          <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+            <img src="guild (3).gif" alt="perk1" style="width: 60px; height: auto; border-radius: 10px;">
+            <span>Tiểu phù thuỷ - Được mời thêm 1 bạn bè gia nhập guild với hộ chiếu trọn đời</span>
+          </div>
+          <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+            <img src="guild1.gif" alt="perk2" style="width: 60px; height: auto; border-radius: 10px;">
+            <span>Bí ngô dăm đảng - Vé ra vào guild không giới hạn lần</span>
+          </div>
+        `;
       } else {
-        resultBox.style.display = "none";
-        resultBox.classList.remove("slide-in");
-        backBtn.style.display = "none";
+        congratsText.textContent = "Chúc mừng! Bạn đã nhận được badge Hiệp Sĩ Danh Dự - The Honorable Knight";
+        badgeTitle.textContent = "";
+        badgeImg.src = "guild5.gif";
+        perkSection.innerHTML = `
+          <p style="font-weight: bold; font-size: 1.1rem;">Vật phẩm & Quyền lợi</p>
+          <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+            <img src="guild11.gif" alt="perk" style="width: 60px; height: auto; border-radius: 10px;">
+            <span>Rồng Lửa ASMR - vé ra vào guild không giới hạn lần</span>
+          </div>
+        `;
       }
+
+      resultBox.scrollIntoView({ behavior: 'smooth' });
     });
 
     backBtn.addEventListener("click", () => {
@@ -270,14 +280,12 @@
       backBtn.style.display = "none";
     });
 
-    if (claimBtn) {
-      let shown = false;
-      claimBtn.addEventListener("click", () => {
-        shown = !shown;
-        perkSection.style.display = shown ? "block" : "none";
-        if (shown) perkSection.scrollIntoView({ behavior: "smooth" });
-      });
-    }
+    let shown = false;
+    claimBtn.addEventListener("click", () => {
+      shown = !shown;
+      perkSection.style.display = shown ? "block" : "none";
+      if (shown) perkSection.scrollIntoView({ behavior: "smooth" });
+    });
   </script>
 </body>
 </html>
