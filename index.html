@@ -23,6 +23,30 @@
       overflow-x: hidden;
     }
 
+    header {
+      width: 100%;
+      text-align: center;
+      padding: 20px 10px 10px;
+      background: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      color: #a52a2a;
+      text-shadow: 1px 1px 3px gold;
+    }
+
+    header h2 {
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #333;
+      margin-top: 5px;
+    }
+
     .wrapper {
       display: flex;
       overflow-x: auto;
@@ -56,19 +80,6 @@
       max-width: 500px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
       text-align: center;
-    }
-
-    h1 {
-      font-size: 2.2rem;
-      color: #a52a2a;
-      text-shadow: 1px 1px 3px gold;
-    }
-
-    h2 {
-      font-size: 1.2rem;
-      font-style: italic;
-      margin-bottom: 20px;
-      color: #333;
     }
 
     select {
@@ -158,14 +169,17 @@
 </head>
 <body>
 
+  <header>
+    <h1>Thánh chỉ chính thức ✨👑</h1>
+    <h2><em>AwesomeSauce Kingdom edition</em></h2>
+  </header>
+
   <button id="goBackBtn">🔙 Quay lại</button>
 
   <div class="wrapper">
     <div class="container">
       <div class="inner-box">
         <div class="box">
-          <h1>Thánh chỉ chính thức ✨👑</h1>
-          <h2><em>AwesomeSauce Kingdom edition</em></h2>
           <label for="poll">Chọn tên ingame của bạn:</label>
           <select id="poll">
             <option disabled selected>-- Chọn tên --</option>
