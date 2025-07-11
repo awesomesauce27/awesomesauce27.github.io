@@ -317,29 +317,44 @@
       hardworkNote.style.display = "none";
       badgeImg.src = "guild (4).gif";
       perkSection.innerHTML = `
-        <p style="font-weight: bold; font-size: 1.1rem;">Vật phẩm & Quyền lợi</p>
-        <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
-          <img src="gifghibli13.gif" alt="perk3" style="width: 60px; height: auto; border-radius: 10px;">
-          <span>Không có đặc quyền gì ngoài việc ngồi hóng chuyện xung quanh</span>
-        </div>
-      `;
-    } else {
+  <p style="font-weight: bold; font-size: 1.1rem;">Vật phẩm & Quyền lợi</p>
+  <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+    <img src="gifghibli13.gif" alt="perk3" style="width: 60px; height: auto; border-radius: 10px;">
+    <span>Không có đặc quyền gì ngoài việc ngồi hóng chuyện xung quanh</span>
+  </div>
+
+  <!-- Guild Summary Button -->
+  <div style="margin-top: 20px; display: flex; align-items: center; gap: 10px; justify-content: center;">
+    <img src="guildicon.gif" alt="guild-icon" style="width: 40px; height: auto;">
+    <button id="viewGuildSummary" style="padding: 10px 20px; font-size: 1rem; border-radius: 10px; border: none; background-color: #a52a2a; color: white; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); cursor: pointer;">
+      Xem tổng kết guild
+    </button>
+  </div>
+`;    } else {
   congratsText.textContent = "Chúc mừng! Bạn đã nhận được badge Hiệp Sĩ Danh Dự - ⚔️ The Honorable Knight 🛡️";      badgeTitle.textContent = "";
       exclusiveNote.style.display = "none";
       hardworkNote.style.display = "block";
 hardworkNote.textContent = "(Dành cho những người chơi chăm chỉ nhất)";
       badgeImg.src = "guild5.gif";
       perkSection.innerHTML = `
-        <p style="font-weight: bold; font-size: 1.1rem;">Vật phẩm & Quyền lợi</p>
-        <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
-          <img src="guild6.gif" alt="perk" style="width: 60px; height: auto; border-radius: 10px;">
-          <span>Gươm Vô Danh - Vé ra vào guild không giới hạn lần</span>
-        </div>
-        <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
-          <img src="guild11.gif" alt="perk3" style="width: 60px; height: auto; border-radius: 10px;">
-          <span>Rồng Ngàn Tuổi - Thẻ công dân trọn đời ở kingdum</span>
-        </div>
-      `;
+  <p style="font-weight: bold; font-size: 1.1rem;">Vật phẩm & Quyền lợi</p>
+  <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+    <img src="guild6.gif" alt="perk" style="width: 60px; height: auto; border-radius: 10px;">
+    <span>Gươm Vô Danh - Vé ra vào guild không giới hạn lần</span>
+  </div>
+  <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+    <img src="guild11.gif" alt="perk3" style="width: 60px; height: auto; border-radius: 10px;">
+    <span>Rồng Ngàn Tuổi - Thẻ công dân trọn đời ở kingdum</span>
+  </div>
+
+  <!-- Guild Summary Button -->
+  <div style="margin-top: 20px; display: flex; align-items: center; gap: 10px; justify-content: center;">
+    <img src="guildicon.gif" alt="guild-icon" style="width: 40px; height: auto;">
+    <button id="viewGuildSummary" style="padding: 10px 20px; font-size: 1rem; border-radius: 10px; border: none; background-color: #a52a2a; color: white; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); cursor: pointer;">
+      Xem tổng kết guild
+    </button>
+  </div>
+`;
     }
 
     resultBox.scrollIntoView({ behavior: 'smooth' });
@@ -350,21 +365,31 @@ hardworkNote.textContent = "(Dành cho những người chơi chăm chỉ nhất
     backBtn.style.display = "none";
   });
 
-  let shown = false;
+let shown = false;
+let guildSummaryShown = false;
   claimBtn.addEventListener("click", () => {
     shown = !shown;
     perkSection.style.display = shown ? "block" : "none";
 // Handle guild summary button click
-document.addEventListener("click", function(e) {
+    if (shown) perkSection.scrollIntoView({ behavior: "smooth" });
+});
+document.addEventListener("click", function (e) {
   if (e.target && e.target.id === "viewGuildSummary") {
     const guildSummaryBox = document.getElementById("guildSummaryBox");
-    guildSummaryBox.style.display = "block";
-    guildSummaryBox.classList.add("slide-left");
-    guildSummaryBox.scrollIntoView({ behavior: "smooth" });
+
+    // Toggle the visibility
+    guildSummaryShown = !guildSummaryShown;
+
+    if (guildSummaryShown) {
+      guildSummaryBox.style.display = "block";
+      guildSummaryBox.classList.add("slide-left");
+      guildSummaryBox.scrollIntoView({ behavior: "smooth" });
+    } else {
+      guildSummaryBox.style.display = "none";
+      guildSummaryBox.classList.remove("slide-left");
+    }
   }
 });
-    if (shown) perkSection.scrollIntoView({ behavior: "smooth" });
-  });
 </script>
 <!-- Guild Summary Box - Wendy -->
 <div id="guildSummaryBox" class="result-box-content" style="display: none; margin-top: 20px;">
