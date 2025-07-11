@@ -358,10 +358,15 @@ hardworkNote.textContent = "(Dành cho những người chơi chăm chỉ nhất
   });
 
   backBtn.addEventListener("click", () => {
-    container.scrollIntoView({ behavior: 'smooth' });
-    backBtn.style.display = "none";
-  });
+  container.scrollIntoView({ behavior: 'smooth' });
+  backBtn.style.display = "none";
 
+  // ✨ Hide guild summary box too when going back
+  const guildSummaryBox = document.getElementById("guildSummaryBox");
+  guildSummaryBox.style.display = "none";
+  guildSummaryBox.classList.remove("slide-left");
+  guildSummaryShown = false; // reset the state so you can open it again later
+});
 let shown = false;
 let guildSummaryShown = false;
   claimBtn.addEventListener("click", () => {
