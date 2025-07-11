@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+<meta property="og:title" content="Your Site Title" />
+<meta property="og:description" content="A brief description of your site" />
+<meta property="og:image" content="https://yourdomain.com/preview-image.png" />
+<meta property="og:url" content="https://awesomesauce27.github.io" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thánh chỉ chính thức</title>
@@ -29,8 +33,7 @@
       padding: 20px 10px 10px;
       background: rgba(255, 255, 255, 0.6);
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      position: sticky;
-      top: 0;
+      position: relative;
       z-index: 100;
     }
 
@@ -165,141 +168,173 @@
       0% { transform: translateY(0) scale(1); opacity: 1; }
       100% { transform: translateY(-50px) scale(0.5); opacity: 0; }
     }
+
+    .exclusive-note {
+      font-style: italic;
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 5px;
+    }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Thánh chỉ chính thức ✨👑</h1>
-    <h2><em>AwesomeSauce Kingdom edition</em></h2>
-  </header>
+<header>
+  <h1>Thánh chỉ chính thức ✨👑</h1>
+  <h2><em>AwesomeSauce Kingdom edition</em></h2>
+</header>
 
-  <button id="goBackBtn">🔙 Quay lại</button>
+<button id="goBackBtn">🔙 Quay lại</button>
 
-  <div class="wrapper">
-    <div class="container">
-      <div class="inner-box">
-        <div class="box">
-          <label for="poll">Chọn tên ingame của bạn:</label>
-          <select id="poll">
-            <option disabled selected>-- Chọn tên --</option>
-            <option>|NF|Wendy</option>
-            <option>BúnThịtLướng</option>
-            <option>NgdepNeverQuit</option>
-            <option>Natsume</option>
-            <option>|DJ|Just</option>
-            <option>OPH SugaDaddy</option>
-            <option>Osaragi</option>
-            <option>AN|anhvũ</option>
-            <option>Todegott</option>
-            <option>SMG</option>
-            <option>Eli_echalne</option>
-            <option>Iris|Sebato</option>
-            <option>Shiru</option>
-            <option>AK|Akei</option>
-            <option>TnG`Aesop</option>
-            <option>OtisDuyLinh</option>
-            <option>Chris`taten</option>
-            <option>CúbuAesop Carl</option>
-            <option>Không tìm thấy tên bạn?</option>
-          </select>
-          <button id="getBadge">Nhận badge</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="result-box">
-      <div class="inner-box">
-        <div id="resultBox" class="result-box-content" style="display: none;">
-          <h3 id="congratsText"></h3>
-          <p id="badgeTitle" style="font-weight: bold;"></p>
-          <img id="badgeImg" src="" alt="badge" style="width: 100%; border-radius: 15px; margin-top: 10px;">
-
-          <button id="claimPerks" style="margin-top: 15px; padding: 10px 20px; font-size: 1rem; border-radius: 10px; border: none; background-color: #a52a2a; color: white; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); cursor: pointer;">
-            Nhận badge
-          </button>
-
-          <div id="perkSection" style="display: none; margin-top: 20px;"></div>
-        </div>
+<div class="wrapper">
+  <div class="container">
+    <div class="inner-box">
+      <div class="box">
+        <label for="poll">Chọn tên ingame của bạn:</label>
+        <select id="poll">
+          <option disabled selected>-- Chọn tên --</option>
+          <option>|NF|~wendy</option>
+          <option>BúnThịtLướng</option>
+          <option>NgdepNeverQuit</option>
+          <option>Natsume</option>
+          <option>OPH SugaDaddy</option>
+          <option>Osaragi</option>
+          <option>AN|anhvũ</option>
+          <option>Todegott</option>
+          <option>SMG</option>
+          <option>Eli_Echalne</option>
+          <option>Irjs|Sebato</option>
+          <option>Shiru</option>
+          <option>OtisDuyLinh</option>
+          <option>Chris\`taten</option>
+          <option>Freodore2434</option>
+          <option>Pie?</option>
+          <option>Không tìm thấy tên bạn?</option>
+        </select>
+        <button id="getBadge">Nhận badge</button>
       </div>
     </div>
   </div>
 
-  <script>
-    for (let i = 0; i < 30; i++) {
-      const sparkle = document.createElement('div');
-      sparkle.className = 'sparkle';
-      sparkle.style.left = Math.random() * 100 + 'vw';
-      sparkle.style.top = Math.random() * 100 + 'vh';
-      sparkle.style.animationDelay = (Math.random() * 2) + 's';
-      document.body.appendChild(sparkle);
+  <div class="result-box">
+    <div class="inner-box">
+      <div id="resultBox" class="result-box-content" style="display: none;">
+        <h3 id="congratsText"></h3>
+        <p class="exclusive-note" id="hardworkNote" style="display: none;"></p>
+        <p id="badgeTitle" style="font-weight: bold;"></p>
+        <p class="exclusive-note" id="exclusiveNote" style="display: none;">(Độc quyền cho người chơi đứng top 1 nhiều lần nhất)</p>
+        <img id="badgeImg" src="" alt="badge" style="width: 100%; border-radius: 15px; margin-top: 10px;">
+        <button id="claimPerks" style="margin-top: 15px; padding: 10px 20px; font-size: 1rem; border-radius: 10px; border: none; background-color: #a52a2a; color: white; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); cursor: pointer;">
+          Nhận badge
+        </button>
+        <div id="perkSection" style="display: none; margin-top: 20px;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  for (let i = 0; i < 30; i++) {
+    const sparkle = document.createElement('div');
+    sparkle.className = 'sparkle';
+    sparkle.style.left = Math.random() * 100 + 'vw';
+    sparkle.style.top = Math.random() * 100 + 'vh';
+    sparkle.style.animationDelay = (Math.random() * 2) + 's';
+    document.body.appendChild(sparkle);
+  }
+
+  const selectBox = document.getElementById("poll");
+  const badgeButton = document.getElementById("getBadge");
+  const resultBox = document.getElementById("resultBox");
+  const congratsText = document.getElementById("congratsText");
+  const badgeTitle = document.getElementById("badgeTitle");
+  const badgeImg = document.getElementById("badgeImg");
+  const claimBtn = document.getElementById("claimPerks");
+  const perkSection = document.getElementById("perkSection");
+  const backBtn = document.getElementById("goBackBtn");
+  const container = document.querySelector(".container");
+  const exclusiveNote = document.getElementById("exclusiveNote");
+  const hardworkNote = document.getElementById("hardworkNote");
+
+  selectBox.addEventListener("change", () => {
+    badgeButton.style.display = "block";
+  });
+
+  badgeButton.addEventListener("click", () => {
+    const selected = selectBox.value;
+    resultBox.style.display = "block";
+    resultBox.classList.add("slide-in");
+    backBtn.style.display = "block";
+    perkSection.style.display = "none";
+    perkSection.innerHTML = "";
+
+    if (selected === "|NF|~wendy") {
+      congratsText.textContent = "Chúc mừng! Bạn đã nhận được chiếc badge danh dự duy nhất của vương quốc ✨👑";
+      badgeTitle.textContent = "✨ The Honorable Witch ✨";
+      exclusiveNote.style.display = "block";
+      hardworkNote.style.display = "none";
+      badgeImg.src = "guild.gif";
+      perkSection.innerHTML = `
+        <p style="font-weight: bold; font-size: 1.1rem;">Vật phẩm & Quyền lợi</p>
+        <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+          <img src="guild (3).gif" alt="perk1" style="width: 60px; height: auto; border-radius: 10px;">
+          <span>Tiểu Phù Thuỷ - Được mời thêm 1 bạn bè gia nhập guild với hộ chiếu trọn đời</span>
+        </div>
+        <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+          <img src="guild1.gif" alt="perk2" style="width: 60px; height: auto; border-radius: 10px;">
+          <span>Bí Ngô Kì Lạ - Vé ra vào guild không giới hạn lần</span>
+        </div>
+        <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+          <img src="guild11.gif" alt="perk3" style="width: 60px; height: auto; border-radius: 10px;">
+          <span>Rồng Ngàn Tuổi - Thẻ công dân trọn đời ở kingdum</span>
+        </div>
+      `;
+    } else if (selected === "Không tìm thấy tên bạn?") {
+      congratsText.textContent = "Chúc mừng! Bạn đã nhận được badge Bù Nhìn - Default Scarecrow - thành viên không chính thức của kingdum";
+      badgeTitle.textContent = "";
+      exclusiveNote.style.display = "none";
+      hardworkNote.style.display = "none";
+      badgeImg.src = "guild (4).gif";
+      perkSection.innerHTML = `
+        <p style="font-weight: bold; font-size: 1.1rem;">Vật phẩm & Quyền lợi</p>
+        <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+          <img src="gifghibli13.gif" alt="perk3" style="width: 60px; height: auto; border-radius: 10px;">
+          <span>Không có đặc quyền gì ngoài việc ngồi hóng chuyện xung quanh</span>
+        </div>
+      `;
+    } else {
+  congratsText.textContent = "Chúc mừng! Bạn đã nhận được badge Hiệp Sĩ Danh Dự - ⚔️ The Honorable Knight 🛡️";      badgeTitle.textContent = "";
+      exclusiveNote.style.display = "none";
+      hardworkNote.style.display = "block";
+hardworkNote.textContent = "(Dành cho những người chơi chăm chỉ nhất)";
+      badgeImg.src = "guild5.gif";
+      perkSection.innerHTML = `
+        <p style="font-weight: bold; font-size: 1.1rem;">Vật phẩm & Quyền lợi</p>
+        <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+          <img src="guild6.gif" alt="perk" style="width: 60px; height: auto; border-radius: 10px;">
+          <span>Gươm Vô Danh - Vé ra vào guild không giới hạn lần</span>
+        </div>
+        <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+          <img src="guild11.gif" alt="perk3" style="width: 60px; height: auto; border-radius: 10px;">
+          <span>Rồng Ngàn Tuổi - Thẻ công dân trọn đời ở kingdum</span>
+        </div>
+      `;
     }
 
-    const selectBox = document.getElementById("poll");
-    const badgeButton = document.getElementById("getBadge");
-    const resultBox = document.getElementById("resultBox");
-    const congratsText = document.getElementById("congratsText");
-    const badgeTitle = document.getElementById("badgeTitle");
-    const badgeImg = document.getElementById("badgeImg");
-    const claimBtn = document.getElementById("claimPerks");
-    const perkSection = document.getElementById("perkSection");
-    const backBtn = document.getElementById("goBackBtn");
-    const container = document.querySelector(".container");
+    resultBox.scrollIntoView({ behavior: 'smooth' });
+  });
 
-    selectBox.addEventListener("change", () => {
-      badgeButton.style.display = "block";
-    });
+  backBtn.addEventListener("click", () => {
+    container.scrollIntoView({ behavior: 'smooth' });
+    backBtn.style.display = "none";
+  });
 
-    badgeButton.addEventListener("click", () => {
-      const selected = selectBox.value;
-      resultBox.style.display = "block";
-      resultBox.classList.add("slide-in");
-      backBtn.style.display = "block";
-      perkSection.style.display = "none";
-      perkSection.innerHTML = "";
-
-      if (selected === "|NF|Wendy") {
-        congratsText.textContent = "Chúc mừng! Bạn đã nhận được chiếc badge danh dự duy nhất của vương quốc";
-        badgeTitle.textContent = "✨ The Honorable Witch ✨";
-        badgeImg.src = "guild.gif";
-        perkSection.innerHTML = `
-          <p style="font-weight: bold; font-size: 1.1rem;">Vật phẩm & Quyền lợi</p>
-          <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
-            <img src="guild (3).gif" alt="perk1" style="width: 60px; height: auto; border-radius: 10px;">
-            <span>Tiểu phù thuỷ - Được mời thêm 1 bạn bè gia nhập guild với hộ chiếu trọn đời</span>
-          </div>
-          <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
-            <img src="guild1.gif" alt="perk2" style="width: 60px; height: auto; border-radius: 10px;">
-            <span>Bí ngô dăm đảng - Vé ra vào guild không giới hạn lần</span>
-          </div>
-        `;
-      } else {
-        congratsText.textContent = "Chúc mừng! Bạn đã nhận được badge Hiệp Sĩ Danh Dự - The Honorable Knight";
-        badgeTitle.textContent = "";
-        badgeImg.src = "guild5.gif";
-        perkSection.innerHTML = `
-          <p style="font-weight: bold; font-size: 1.1rem;">Vật phẩm & Quyền lợi</p>
-          <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
-            <img src="guild11.gif" alt="perk" style="width: 60px; height: auto; border-radius: 10px;">
-            <span>Rồng Lửa ASMR - vé ra vào guild không giới hạn lần</span>
-          </div>
-        `;
-      }
-
-      resultBox.scrollIntoView({ behavior: 'smooth' });
-    });
-
-    backBtn.addEventListener("click", () => {
-      container.scrollIntoView({ behavior: 'smooth' });
-      backBtn.style.display = "none";
-    });
-
-    let shown = false;
-    claimBtn.addEventListener("click", () => {
-      shown = !shown;
-      perkSection.style.display = shown ? "block" : "none";
-      if (shown) perkSection.scrollIntoView({ behavior: "smooth" });
-    });
-  </script>
+  let shown = false;
+  claimBtn.addEventListener("click", () => {
+    shown = !shown;
+    perkSection.style.display = shown ? "block" : "none";
+    if (shown) perkSection.scrollIntoView({ behavior: "smooth" });
+  });
+</script>
 </body>
-</html>
+</html> 
