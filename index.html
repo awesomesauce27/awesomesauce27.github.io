@@ -124,6 +124,20 @@
     }
 
     .slide-in {
+.slide-left {
+  animation: slideFromLeft 0.8s ease-out forwards;
+}
+
+@keyframes slideFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
       animation: slideIn 0.8s ease-out forwards;
     }
 
@@ -275,21 +289,28 @@
       hardworkNote.style.display = "none";
       badgeImg.src = "guild.gif";
       perkSection.innerHTML = `
-        <p style="font-weight: bold; font-size: 1.1rem;">Vật phẩm & Quyền lợi</p>
-        <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
-          <img src="guild (3).gif" alt="perk1" style="width: 60px; height: auto; border-radius: 10px;">
-          <span>Tiểu Phù Thuỷ - Được mời thêm 1 bạn bè gia nhập guild với hộ chiếu trọn đời</span>
-        </div>
-        <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
-          <img src="guild1.gif" alt="perk2" style="width: 60px; height: auto; border-radius: 10px;">
-          <span>Bí Ngô Kì Lạ - Vé ra vào guild không giới hạn lần</span>
-        </div>
-        <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
-          <img src="guild11.gif" alt="perk3" style="width: 60px; height: auto; border-radius: 10px;">
-          <span>Rồng Ngàn Tuổi - Thẻ công dân trọn đời ở kingdum</span>
-        </div>
-      `;
-    } else if (selected === "Không tìm thấy tên bạn?") {
+  <p style="font-weight: bold; font-size: 1.1rem;">Vật phẩm & Quyền lợi</p>
+  <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+    <img src="guild (3).gif" alt="perk1" style="width: 60px; height: auto; border-radius: 10px;">
+    <span>Tiểu Phù Thuỷ - Được mời thêm 1 bạn bè gia nhập guild với hộ chiếu trọn đời</span>
+  </div>
+  <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+    <img src="guild1.gif" alt="perk2" style="width: 60px; height: auto; border-radius: 10px;">
+    <span>Bí Ngô Kì Lạ - Vé ra vào guild không giới hạn lần</span>
+  </div>
+  <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+    <img src="guild11.gif" alt="perk3" style="width: 60px; height: auto; border-radius: 10px;">
+    <span>Rồng Ngàn Tuổi - Thẻ công dân trọn đời ở kingdum</span>
+  </div>
+
+  <!-- Guild Summary Button -->
+  <div style="margin-top: 20px; display: flex; align-items: center; gap: 10px; justify-content: center;">
+    <img src="guildicon.gif" alt="guild-icon" style="width: 40px; height: auto;">
+    <button id="viewGuildSummary" style="padding: 10px 20px; font-size: 1rem; border-radius: 10px; border: none; background-color: #a52a2a; color: white; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); cursor: pointer;">
+      Xem tổng kết guild
+    </button>
+  </div>
+`;    } else if (selected === "Không tìm thấy tên bạn?") {
       congratsText.textContent = "Chúc mừng! Bạn đã nhận được badge Bù Nhìn - Default Scarecrow - thành viên không chính thức của kingdum";
       badgeTitle.textContent = "";
       exclusiveNote.style.display = "none";
@@ -333,8 +354,38 @@ hardworkNote.textContent = "(Dành cho những người chơi chăm chỉ nhất
   claimBtn.addEventListener("click", () => {
     shown = !shown;
     perkSection.style.display = shown ? "block" : "none";
+// Handle guild summary button click
+document.addEventListener("click", function(e) {
+  if (e.target && e.target.id === "viewGuildSummary") {
+    const guildSummaryBox = document.getElementById("guildSummaryBox");
+    guildSummaryBox.style.display = "block";
+    guildSummaryBox.classList.add("slide-left");
+    guildSummaryBox.scrollIntoView({ behavior: "smooth" });
+  }
+});
     if (shown) perkSection.scrollIntoView({ behavior: "smooth" });
   });
 </script>
+<!-- Guild Summary Box - Wendy -->
+<div id="guildSummaryBox" class="result-box-content" style="display: none; margin-top: 20px;">
+  <h3>📜 Tổng kết Guild</h3>
+
+  <div style="margin-top: 20px;">
+    <img src="guild7.jpeg" alt="rank-low" style="width: 100%; border-radius: 15px;">
+    <p style="margin-top: 8px;">Xếp hạng thấp nhất trong mùa (tuần 1)</p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <img src="guild8.jpeg" alt="rank-high" style="width: 100%; border-radius: 15px;">
+    <p style="margin-top: 8px;">Xếp hạng cao nhất trong mùa (tuần 10-tuần cuối)</p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <img src="guild9.jpeg" alt="milestone" style="width: 100%; border-radius: 15px;">
+    <p style="margin-top: 8px;">27/6 – thời điểm đạt được badge rồng - guild đạt 2 triệu 2 điểm</p>
+  </div>
+</div>
 </body>
 </html> 
+
+
